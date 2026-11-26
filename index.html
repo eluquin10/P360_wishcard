@@ -6,8 +6,15 @@
 <title>Best Wishes – Pilot360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Tinos:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+  /* Police « Brittany Signature » : fichier BrittanySignature.ttf placé à côté de index.html */
+  @font-face {
+    font-family: 'Brittany Signature';
+    src: url('BrittanySignature.ttf') format('truetype');
+    font-display: swap;
+  }
+
   :root {
     --navy: #0c2654;
     --navy-deep: #071a3d;
@@ -124,7 +131,7 @@
   .logos-verso .logo-sav { width: 26cqw; transform: translateY(var(--nudge-sav)); }
   .logos-verso .logo-p360 { width: 23cqw; }
 
-  /* ---------- Titre recto « Best Wishes » : bloc centré, même police ---------- */
+  /* ---------- Titre recto « Best Wishes » : bloc centré, police Brittany Signature ---------- */
   .title {
     position: absolute;
     left: 50%;
@@ -142,21 +149,21 @@
   .best,
   .wishes {
     margin: 0;
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 500;
-    line-height: .95;
-    letter-spacing: .02em;
+    font-family: 'Brittany Signature', 'Great Vibes', 'Brush Script MT', cursive;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: .01em;
   }
 
   .best {
-    font-size: 20cqw;
+    font-size: 23cqw;
     color: #eef2f8;
     text-shadow: 0 0 10px rgba(200,215,240,.35);
   }
 
   .wishes {
-    font-size: 19cqw;
-    margin-top: .02em;
+    font-size: 22cqw;
+    margin-top: -.08em;
     background: linear-gradient(180deg, #fff3c4 0%, #f2c462 50%, #d9a64a 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -194,13 +201,13 @@
   }
   .team b { font-weight: 500; }
 
-  /* ---------- Verso ---------- */
+  /* ---------- Verso : texte descendu pour laisser plus d'espace sous le cadre doré ---------- */
   .verso-body {
     position: absolute;
     left: 21%;
     right: 21%;
-    top: 24%;
-    height: 46%;
+    top: 29%;
+    height: 44%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -380,11 +387,11 @@
           <circle cx="90" cy="230" r=".6" class="tw t4"/>
         </g>
 
-        <!-- Étoile filante (tête), même forme que sur le verso -->
-        <g transform="translate(340 100)">
+        <!-- Étoile filante (tête), même forme que sur le verso, alignée avec les fils -->
+        <g transform="translate(340 112)">
           <use href="#bigStar" fill="url(#gStar)" stroke="#f7d98a" stroke-width="1" stroke-linejoin="round" filter="url(#glow)" class="star-outline"/>
         </g>
-        <circle cx="340" cy="100" r="5" fill="#fff8e1" opacity=".5" filter="url(#glow)" class="star-outline"/>
+        <circle cx="340" cy="112" r="5" fill="#fff8e1" opacity=".5" filter="url(#glow)" class="star-outline"/>
       </svg>
 
       <div class="title">
