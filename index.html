@@ -85,22 +85,42 @@
     overflow: visible;
   }
 
-  /* ---------- Logos : couleurs d'origine, côte à côte ---------- */
+  /* ---------- Logos recto : alignés à l'horizontale, plus grands ---------- */
   .logos {
     position: absolute;
-    top: 3.5%;
+    top: 4%;
     left: 0;
     right: 0;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 5cqw;
+    gap: 4cqw;
     opacity: 0;
     animation: fadeIn 1.4s .2s forwards;
   }
-  .logo { display: block; width: auto; }
-  .logo-sav { height: 7.5cqw; }
-  .logo-p360 { height: 8.5cqw; }
+  .logo {
+    display: block;
+    height: auto;
+    max-width: none;
+  }
+  .logo-sav { width: 38cqw; }
+  .logo-p360 { width: 34cqw; }
+
+  /* ---------- Logos verso : alignés à l'horizontale ---------- */
+  .logos-verso {
+    position: absolute;
+    bottom: 4%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3cqw;
+  }
+  .logos-verso .logo-sav { width: 26cqw; }
+  .logos-verso .logo-p360 { width: 23cqw; }
 
   /* ---------- Textes recto ---------- */
   .abs {
@@ -196,19 +216,6 @@
   .wrap.open .verso-body p:nth-child(4) { transition-delay: 2.7s; }
   .wrap.open .verso-body p:nth-child(5) { transition-delay: 3.4s; }
   .verso-body p:last-child { margin-bottom: 0; }
-
-  .logos-verso {
-    position: absolute;
-    bottom: 3.5%;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5cqw;
-  }
-  .logos-verso .logo-sav { height: 6cqw; }
-  .logos-verso .logo-p360 { height: 7cqw; }
 
   /* ---------- Comètes : tracé à la main ---------- */
   .draw {
