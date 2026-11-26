@@ -6,7 +6,7 @@
 <title>Best Wishes – Pilot360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Pinyon+Script&family=Tinos:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Tinos:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #0c2654;
@@ -14,6 +14,8 @@
     --gold: #e9bd62;
     --gold-light: #fff1c4;
     --silver: #dfe5ee;
+    /* Réglage fin de l'alignement du logo Savencia (négatif = remonter, positif = descendre) */
+    --nudge-sav: -0.5cqw;
   }
 
   * { box-sizing: border-box; }
@@ -75,7 +77,7 @@
   }
   .back { transform: rotateY(180deg); }
 
-  /* Illustrations (SVG pleine carte, proportions conservées) */
+  /* Illustrations (SVG pleine carte) */
   svg.art {
     position: absolute;
     inset: 0;
@@ -85,7 +87,7 @@
     overflow: visible;
   }
 
-  /* ---------- Logos recto : alignés à l'horizontale ---------- */
+  /* ---------- Logos recto : alignés sur une même ligne horizontale ---------- */
   .logos {
     position: absolute;
     top: 4%;
@@ -104,7 +106,7 @@
     height: auto;
     max-width: none;
   }
-  .logo-sav { width: 38cqw; }
+  .logo-sav { width: 38cqw; transform: translateY(var(--nudge-sav)); }
   .logo-p360 { width: 34cqw; }
 
   /* ---------- Logos verso : alignés, descendus pour ne pas toucher le cadre ---------- */
@@ -119,14 +121,14 @@
     justify-content: center;
     gap: 3cqw;
   }
-  .logos-verso .logo-sav { width: 26cqw; }
+  .logos-verso .logo-sav { width: 26cqw; transform: translateY(var(--nudge-sav)); }
   .logos-verso .logo-p360 { width: 23cqw; }
 
-  /* ---------- Titre recto « Best Wishes » : bloc centré ---------- */
+  /* ---------- Titre recto « Best Wishes » : bloc centré, même police ---------- */
   .title {
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 54%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
@@ -137,26 +139,29 @@
     animation: riseT 1.8s .9s forwards;
   }
 
-  .best {
+  .best,
+  .wishes {
     margin: 0;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 500;
-    font-size: 20cqw;
     line-height: .95;
     letter-spacing: .02em;
+  }
+
+  .best {
+    font-size: 20cqw;
     color: #eef2f8;
     text-shadow: 0 0 10px rgba(200,215,240,.35);
   }
 
   .wishes {
-    margin: -.12em 0 0;
-    font-family: 'Pinyon Script', cursive;
-    font-weight: 400;
     font-size: 19cqw;
-    line-height: 1.1;
-    color: #f2c462;
-    text-shadow: 0 0 8px rgba(233,189,98,.35);
-    padding-left: 6cqw;   /* léger décalage vers la droite, comme la calligraphie d'origine */
+    margin-top: .02em;
+    background: linear-gradient(180deg, #fff3c4 0%, #f2c462 50%, #d9a64a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 6px rgba(233,189,98,.35));
   }
 
   .divider {
@@ -195,7 +200,7 @@
     left: 21%;
     right: 21%;
     top: 24%;
-    height: 55%;
+    height: 46%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,13 +291,15 @@
     <!-- Étoile à 5 branches en contour : rayon 1 -->
     <path id="os" d="M0 -1 L.235 -.324 L.951 -.309 L.38 .124 L.588 .809 L0 .4 L-.588 .809 L-.38 .124 L-.951 -.309 L-.235 -.324 Z"
           fill="none" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+    <!-- Étoile filante à 5 branches (centrée sur 0,0, rayon 28) : même forme que celle du verso -->
+    <path id="bigStar" d="M0 -28 L6.47 -8.9 L26.63 -8.65 L10.46 3.4 L16.46 22.65 L0 11 L-16.46 22.65 L-10.46 3.4 L-26.63 -8.65 L-6.47 -8.9 Z"/>
 
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="1.8" result="b"/>
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
 
-    <linearGradient id="gStrandF" gradientUnits="userSpaceOnUse" x1="24" y1="300" x2="328" y2="140">
+    <linearGradient id="gStrandF" gradientUnits="userSpaceOnUse" x1="22" y1="300" x2="330" y2="112">
       <stop offset="0" stop-color="#e9bd62" stop-opacity="0"/>
       <stop offset=".55" stop-color="#e9bd62" stop-opacity=".85"/>
       <stop offset="1" stop-color="#fff3c4" stop-opacity="1"/>
@@ -324,7 +331,7 @@
       </div>
 
       <svg class="art" viewBox="0 0 400 500" aria-hidden="true">
-        <!-- Étoiles dorées à 4 branches (sous les logos) -->
+        <!-- Étoiles dorées à 4 branches -->
         <g fill="#f2c462">
           <use href="#sp" transform="translate(30 190) scale(7)"/>
           <use href="#sp" transform="translate(60 105) scale(4)" class="tw t2"/>
@@ -343,7 +350,7 @@
           <use href="#os" transform="translate(118 453) scale(8)"/>
         </g>
 
-        <!-- Points lumineux (hors zone des logos) -->
+        <!-- Points lumineux -->
         <g>
           <circle cx="380" cy="62" r="2.4" fill="#f2c462" class="tw"/>
           <circle cx="200" cy="96" r="2" fill="#f2c462"/>
@@ -357,25 +364,27 @@
           <circle cx="370" cy="320" r="1.2" fill="#fff" class="tw t2"/>
         </g>
 
-        <!-- Comète dorée : fils de lumière partant de l'étoile -->
+        <!-- Comète dorée : fils courbes partant de l'étoile, au-dessus de « Best Wishes » -->
         <g filter="url(#glow)" fill="none" stroke-linecap="round">
-          <path class="draw" pathLength="100" d="M328 140 C250 150 130 200 24 300" stroke="url(#gStrandF)" stroke-width="1.6"/>
-          <path class="draw d2" pathLength="100" d="M326 136 C246 146 126 196 20 290" stroke="#eef2f8" stroke-width=".7" opacity=".85"/>
-          <path class="draw d3" pathLength="100" d="M322 144 C244 166 118 220 14 316" stroke="url(#gStrandF)" stroke-width=".6"/>
-          <path class="draw d4" pathLength="100" d="M320 132 C220 136 140 170 60 260" stroke="#eef2f8" stroke-width=".4" opacity=".7"/>
-          <path class="draw d3" pathLength="100" d="M324 150 C250 176 150 240 70 310" stroke="#f2c462" stroke-width=".4" opacity=".6"/>
-          <path class="draw d4" pathLength="100" d="M310 126 C200 126 120 156 50 232" stroke="#eef2f8" stroke-width=".35" opacity=".5"/>
+          <path class="draw" pathLength="100" d="M330 112 C240 112 120 150 22 300" stroke="url(#gStrandF)" stroke-width="1.6"/>
+          <path class="draw d2" pathLength="100" d="M327 108 C236 106 116 144 16 290" stroke="#eef2f8" stroke-width=".7" opacity=".85"/>
+          <path class="draw d3" pathLength="100" d="M332 118 C246 122 130 170 36 320" stroke="url(#gStrandF)" stroke-width=".6"/>
+          <path class="draw d4" pathLength="100" d="M326 104 C220 100 130 130 60 230" stroke="#eef2f8" stroke-width=".4" opacity=".7"/>
+          <path class="draw d3" pathLength="100" d="M334 122 C258 128 160 170 70 300" stroke="#f2c462" stroke-width=".4" opacity=".6"/>
+          <path class="draw d4" pathLength="100" d="M320 98 C200 92 120 120 60 190" stroke="#eef2f8" stroke-width=".35" opacity=".5"/>
         </g>
         <g fill="#fff3c4">
-          <circle cx="262" cy="150" r=".8" class="tw"/>
-          <circle cx="190" cy="186" r=".7" class="tw t2"/>
-          <circle cx="130" cy="222" r=".6" class="tw t3"/>
-          <circle cx="82" cy="262" r=".6" class="tw t4"/>
+          <circle cx="262" cy="130" r=".8" class="tw"/>
+          <circle cx="200" cy="150" r=".7" class="tw t2"/>
+          <circle cx="140" cy="180" r=".6" class="tw t3"/>
+          <circle cx="90" cy="230" r=".6" class="tw t4"/>
         </g>
-        <!-- Étoile filante (tête), centrée en (335, 130) -->
-        <path class="star-outline" transform="translate(-8 72)" d="M343 22 L352.4 49.1 L381 49.6 L358.2 66.9 L366.5 94.4 L343 78 L319.5 94.4 L327.8 66.9 L305 49.6 L333.6 49.1 Z"
-              fill="url(#gStar)" stroke="#f7d98a" stroke-width=".8" stroke-linejoin="round" filter="url(#glow)"/>
-        <circle cx="335" cy="130" r="5" fill="#fff8e1" opacity=".5" filter="url(#glow)" class="star-outline"/>
+
+        <!-- Étoile filante (tête), même forme que sur le verso -->
+        <g transform="translate(340 100)">
+          <use href="#bigStar" fill="url(#gStar)" stroke="#f7d98a" stroke-width="1" stroke-linejoin="round" filter="url(#glow)" class="star-outline"/>
+        </g>
+        <circle cx="340" cy="100" r="5" fill="#fff8e1" opacity=".5" filter="url(#glow)" class="star-outline"/>
       </svg>
 
       <div class="title">
@@ -390,7 +399,7 @@
     <section class="face back">
 
       <svg class="art" viewBox="0 0 400 500" aria-hidden="true">
-        <!-- Cadre doré arrondi (raccourci pour laisser la place aux logos) -->
+        <!-- Cadre doré arrondi -->
         <rect x="53" y="81" width="296" height="329" rx="14" fill="none"
               stroke="#d6a94f" stroke-width="1.4" opacity=".9" class="star-outline"/>
 
