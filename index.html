@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Best Wishes – Pilot360</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Great+Vibes&family=Tinos:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0a1d38;
-    --navy-deep: #061329;
-    --silver: #c9d0da;
-    --silver-light: #e6eaf1;
-    --ivory: #f2f4f7;
-    --gold: #f5c25b;
+    --navy: #0c2654;
+    --navy-deep: #071a3d;
+    --gold: #e9bd62;
     --gold-light: #fff1c4;
+    --silver: #dfe5ee;
   }
 
   * { box-sizing: border-box; }
@@ -26,10 +24,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 22px;
-    background: radial-gradient(ellipse at 50% 30%, #14294d 0%, #040b1b 75%);
+    gap: 20px;
+    background: radial-gradient(ellipse at 50% 30%, #14306a 0%, #040d22 75%);
     font-family: 'Montserrat', Arial, sans-serif;
-    color: var(--ivory);
+    color: var(--silver);
     overflow: hidden;
   }
 
@@ -42,12 +40,12 @@
     pointer-events: none;
   }
 
-  /* ---------- Carte A6 (105 x 148) ---------- */
+  /* ---------- Carte ---------- */
   .wrap {
     position: relative;
     z-index: 1;
     width: min(400px, 88vw);
-    aspect-ratio: 105 / 148;
+    aspect-ratio: 4 / 5;
     container-type: inline-size;
     perspective: 1800px;
     cursor: pointer;
@@ -61,24 +59,23 @@
     transform-style: preserve-3d;
     transition: transform 1.3s cubic-bezier(.22,.8,.25,1);
   }
-
   .wrap.open .card { transform: rotateY(180deg); }
 
   .face {
     position: absolute;
     inset: 0;
-    border-radius: 14px;
+    border-radius: 12px;
     overflow: hidden;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
     background:
-      radial-gradient(circle at 85% 8%, rgba(201,208,218,.10), transparent 50%),
-      linear-gradient(170deg, #0d2445 0%, var(--navy) 55%, var(--navy-deep) 100%);
-    box-shadow: 0 30px 60px -20px rgba(0,0,0,.8), 0 0 0 1px rgba(201,208,218,.22);
+      radial-gradient(circle at 50% 35%, rgba(70,110,180,.18), transparent 65%),
+      linear-gradient(180deg, var(--navy) 0%, #0a2250 60%, var(--navy-deep) 100%);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,.8), 0 0 0 1px rgba(201,208,218,.18);
   }
-
   .back { transform: rotateY(180deg); }
 
+  /* Illustrations (SVG pleine carte, proportions conservées) */
   svg.art {
     position: absolute;
     inset: 0;
@@ -88,141 +85,121 @@
     overflow: visible;
   }
 
-  /* ---------- Logos : blancs, côte à côte, en haut ---------- */
+  /* ---------- Logos : couleurs d'origine, côte à côte ---------- */
   .logos {
     position: absolute;
-    top: 7%;
+    top: 3.5%;
     left: 0;
     right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6cqw;
+    gap: 5cqw;
     opacity: 0;
     animation: fadeIn 1.4s .2s forwards;
   }
+  .logo { display: block; width: auto; }
+  .logo-sav { height: 7.5cqw; }
+  .logo-p360 { height: 8.5cqw; }
 
-  .logo {
-    display: block;
-    height: 11cqw;
-    width: auto;
-    /* Force un rendu blanc très clair, avec une légère lueur */
-    filter: brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,255,255,.25));
-  }
-
-  .logo-sav { height: 10cqw; }
-  .logo-p360 { height: 11cqw; }
-
-  /* ---------- RECTO : textes ---------- */
+  /* ---------- Textes recto ---------- */
   .abs {
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
     white-space: nowrap;
+    margin: 0;
   }
 
   .best {
-    top: 60%;
-    font-family: 'Caveat', cursive;
-    font-weight: 700;
-    font-size: 21cqw;
+    top: 41%;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: 20.5cqw;
     line-height: 1;
-    color: var(--silver-light);
-    text-shadow: 0 0 18px rgba(201,208,218,.25);
-    margin: 0;
+    letter-spacing: .01em;
+    background: linear-gradient(180deg, #ffffff 0%, #dfe5ee 55%, #aab6c8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 6px rgba(200,215,240,.25));
     opacity: 0;
-    animation: riseX 1.6s 1.1s forwards;
+    animation: riseX 1.6s .9s forwards;
+  }
+
+  .wishes {
+    top: 60%;
+    font-family: 'Great Vibes', cursive;
+    font-size: 28cqw;
+    line-height: 1;
+    background: linear-gradient(180deg, #fff3c4 0%, #f2c462 45%, #b98424 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 5px rgba(233,189,98,.3));
+    opacity: 0;
+    animation: riseX 1.8s 1.4s forwards;
+  }
+
+  .divider {
+    position: absolute;
+    left: 26%;
+    right: 26%;
+    top: 75%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+    opacity: 0;
+    animation: fadeIn 1.4s 2s forwards;
   }
 
   .team {
-    top: 88%;
+    top: 83%;
     text-align: center;
-    font-size: 2.7cqw;
+    font-size: 2.9cqw;
     font-weight: 400;
-    letter-spacing: .32em;
-    line-height: 2;
+    letter-spacing: .3em;
+    line-height: 1.7;
     text-transform: uppercase;
     color: var(--silver);
-    margin: 0;
     opacity: 0;
-    animation: riseX 1.4s 1.6s forwards;
+    animation: riseX 1.4s 2.2s forwards;
   }
-  .team b { font-weight: 600; color: var(--silver-light); }
+  .team b { font-weight: 500; }
 
-  /* ---------- Comète dorée fixe (recto et verso) ---------- */
-  .streak-path {
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: drawLine 2.6s ease-out forwards;
-  }
-  .streak-path.s-delay { animation-delay: 1.2s; }
-
-  .streak-head {
-    opacity: 0;
-    animation: headIn .8s ease-out 2.4s forwards, headPulse 3.6s ease-in-out 3.2s infinite;
-  }
-
-  .hand-line {
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: drawLine 2.2s ease forwards;
-    animation-delay: 2.6s;
-  }
-
-  .twinkle { animation: twinkle 3.2s ease-in-out infinite; }
-  .twinkle.t2 { animation-delay: -1s; }
-  .twinkle.t3 { animation-delay: -2s; }
-  .twinkle.t4 { animation-delay: -.5s; animation-duration: 4s; }
-
-  /* ---------- VERSO ---------- */
+  /* ---------- Verso ---------- */
   .verso-body {
     position: absolute;
-    left: 11%;
-    right: 11%;
-    top: 34%;
-    bottom: 20%;
+    left: 21%;
+    right: 21%;
+    top: 24%;
+    height: 55%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    font-family: 'Tinos', 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 3.3cqw;
+    line-height: 1.22;
+    color: #f4f1ea;
   }
-
   .verso-body p {
-    font-weight: 300;
-    font-size: 3.2cqw;
-    line-height: 1.75;
-    color: var(--ivory);
-    margin: 0 0 1.1em;
+    margin: 0 0 1.2em;
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(8px);
     transition: opacity 1s ease, transform 1s ease;
   }
-
-  .verso-body p.intro {
-    font-weight: 400;
-    color: var(--silver-light);
-  }
-
-  .verso-body .sign {
-    font-family: 'Caveat', cursive;
-    font-weight: 700;
-    font-size: 8.5cqw;
-    line-height: 1.1;
-    color: var(--silver-light);
-    margin-top: .2em;
-    margin-bottom: 0;
-  }
-
   .wrap.open .verso-body p { opacity: 1; transform: translateY(0); }
   .wrap.open .verso-body p:nth-child(1) { transition-delay: .9s; }
   .wrap.open .verso-body p:nth-child(2) { transition-delay: 1.5s; }
   .wrap.open .verso-body p:nth-child(3) { transition-delay: 2.1s; }
   .wrap.open .verso-body p:nth-child(4) { transition-delay: 2.7s; }
   .wrap.open .verso-body p:nth-child(5) { transition-delay: 3.4s; }
+  .verso-body p:last-child { margin-bottom: 0; }
 
   .logos-verso {
     position: absolute;
-    bottom: 7%;
+    bottom: 3.5%;
     left: 0;
     right: 0;
     display: flex;
@@ -230,31 +207,42 @@
     justify-content: center;
     gap: 5cqw;
   }
-  .logos-verso .logo-sav { height: 6.5cqw; }
+  .logos-verso .logo-sav { height: 6cqw; }
   .logos-verso .logo-p360 { height: 7cqw; }
 
-  /* ---------- Animations ---------- */
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+  /* ---------- Comètes : tracé à la main ---------- */
+  .draw {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawLine 2.6s ease-out forwards;
   }
+  .draw.d2 { animation-delay: .25s; }
+  .draw.d3 { animation-delay: .5s; }
+  .draw.d4 { animation-delay: .8s; }
+  .star-outline { opacity: 0; animation: fadeIn 1.2s 2.4s forwards; }
+
+  .tw { animation: twinkle 3.4s ease-in-out infinite; }
+  .tw.t2 { animation-delay: -1.2s; }
+  .tw.t3 { animation-delay: -2.2s; }
+  .tw.t4 { animation-delay: -.6s; animation-duration: 4.2s; }
+
+  .hint {
+    margin: 0;
+    font-size: .68rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: rgba(223,229,238,.5);
+  }
+
+  /* ---------- Animations ---------- */
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes riseX {
     from { opacity: 0; transform: translate(-50%, -40%); }
     to   { opacity: 1; transform: translate(-50%, -50%); }
   }
-  @keyframes drawLine {
-    to { stroke-dashoffset: 0; }
-  }
-  @keyframes headIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  @keyframes headPulse {
-    0%, 100% { opacity: 1; }
-    50%      { opacity: .55; }
-  }
+  @keyframes drawLine { to { stroke-dashoffset: 0; } }
   @keyframes twinkle {
-    0%, 100% { opacity: .25; }
+    0%, 100% { opacity: .35; }
     50%      { opacity: 1; }
   }
 
@@ -270,6 +258,38 @@
 </head>
 <body>
 
+<!-- Définitions communes : formes d'étoiles et dégradés -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Étoile à 4 branches (sparkle) : rayon 1 -->
+    <path id="sp" d="M0 -1 C.08 -.08 .08 -.08 1 0 C.08 .08 .08 .08 0 1 C-.08 .08 -.08 .08 -1 0 C-.08 -.08 -.08 -.08 0 -1Z"/>
+    <!-- Étoile à 5 branches en contour : rayon 1 -->
+    <path id="os" d="M0 -1 L.235 -.324 L.951 -.309 L.38 .124 L.588 .809 L0 .4 L-.588 .809 L-.38 .124 L-.951 -.309 L-.235 -.324 Z"
+          fill="none" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <linearGradient id="gStrandF" gradientUnits="userSpaceOnUse" x1="6" y1="300" x2="318" y2="70">
+      <stop offset="0" stop-color="#e9bd62" stop-opacity="0"/>
+      <stop offset=".55" stop-color="#e9bd62" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#fff3c4" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="gStrandB" gradientUnits="userSpaceOnUse" x1="170" y1="84" x2="334" y2="34">
+      <stop offset="0" stop-color="#e9bd62" stop-opacity="0"/>
+      <stop offset=".55" stop-color="#e9bd62" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#fff3c4" stop-opacity="1"/>
+    </linearGradient>
+    <linearGradient id="gStar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff1c4"/>
+      <stop offset=".5" stop-color="#e9bd62"/>
+      <stop offset="1" stop-color="#b98424"/>
+    </linearGradient>
+  </defs>
+</svg>
+
 <canvas id="sky"></canvas>
 
 <div class="wrap" id="card" role="button" tabindex="0" aria-label="Ouvrir la carte de voeux">
@@ -278,111 +298,134 @@
     <!-- ===================== RECTO ===================== -->
     <section class="face front">
 
-      <!-- Comète dorée fixe + étoiles, au-dessus de « Best Wishes » -->
-      <svg class="art" viewBox="0 0 105 148" aria-hidden="true">
-        <defs>
-          <linearGradient id="goldF" gradientUnits="userSpaceOnUse" x1="12" y1="58" x2="92" y2="36">
-            <stop offset="0" stop-color="#f5c25b" stop-opacity="0"/>
-            <stop offset=".55" stop-color="#f5c25b" stop-opacity=".9"/>
-            <stop offset="1" stop-color="#fff1c4" stop-opacity="1"/>
-          </linearGradient>
-          <filter id="glowF" x="-30%" y="-100%" width="160%" height="300%">
-            <feGaussianBlur stdDeviation="1.6"/>
-          </filter>
-          <filter id="haloF" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="2.4"/>
-          </filter>
-        </defs>
-
-        <!-- Halo large doré -->
-        <path class="streak-path" pathLength="100" d="M12 58 L92 36"
-              stroke="#f5c25b" stroke-width="3.2" stroke-linecap="round" opacity=".55" filter="url(#glowF)"/>
-        <!-- Corps de la comète -->
-        <path class="streak-path" pathLength="100" d="M12 58 L92 36"
-              stroke="url(#goldF)" stroke-width="1" stroke-linecap="round"/>
-        <!-- Cœur lumineux -->
-        <path class="streak-path" pathLength="100" d="M12 58 L92 36"
-              stroke="#fffaf0" stroke-width=".3" stroke-linecap="round" opacity=".95"/>
-
-        <!-- Tête de la comète -->
-        <circle class="streak-head" cx="92" cy="36" r="3.6" fill="#f5c25b" opacity=".35" filter="url(#haloF)"/>
-        <circle class="streak-head" cx="92" cy="36" r="1.2" fill="#fff8e1"/>
-
-        <!-- Trait manuscrit sous « Best Wishes » -->
-        <path class="hand-line" pathLength="100" d="M28 110 Q52 114 80 108"
-              fill="none" stroke="#c9d0da" stroke-opacity=".6" stroke-width=".35" stroke-linecap="round"/>
-
-        <!-- Étoiles scintillantes -->
-        <g fill="#ffffff">
-          <path class="twinkle" d="M 14 98 L 14.4 100 L 16.4 100.4 L 14.4 100.8 L 14 102.8 L 13.6 100.8 L 11.6 100.4 L 13.6 100 Z" transform="scale(.9)"/>
-          <path class="twinkle t2" d="M 88 122 L 88.4 124 L 90.4 124.4 L 88.4 124.8 L 88 126.8 L 87.6 124.8 L 85.6 124.4 L 87.6 124 Z" transform="scale(1)"/>
-          <path class="twinkle t3" d="M 18 132 L 18.3 133.4 L 19.7 133.7 L 18.3 134 L 18 135.4 L 17.7 134 L 16.3 133.7 L 17.7 133.4 Z"/>
-          <circle class="twinkle t4" cx="96" cy="84" r=".4"/>
-          <circle class="twinkle t3" cx="8" cy="72" r=".35"/>
-          <circle class="twinkle" cx="30" cy="20" r=".3"/>
-          <circle class="twinkle t2" cx="78" cy="14" r=".4"/>
-          <circle class="twinkle t4" cx="60" cy="130" r=".3"/>
-        </g>
-      </svg>
-
-      <!-- Logos blancs côte à côte, en haut -->
       <div class="logos">
         <img class="logo logo-sav" src="logo%20blanc%20savencia.png" alt="Savencia">
         <img class="logo logo-p360" src="logo%20blanc%20P360.png" alt="Pilot 360">
       </div>
 
-      <p class="abs best">Best Wishes</p>
+      <svg class="art" viewBox="0 0 400 500" aria-hidden="true">
+        <!-- Étoiles dorées à 4 branches -->
+        <g fill="#f2c462">
+          <use href="#sp" transform="translate(53 34) scale(9)"/>
+          <use href="#sp" transform="translate(30 125) scale(7)" class="tw t2"/>
+          <use href="#sp" transform="translate(89 232) scale(4)" class="tw t3"/>
+          <use href="#sp" transform="translate(325 160) scale(9)"/>
+          <use href="#sp" transform="translate(366 270) scale(6)" class="tw t4"/>
+          <use href="#sp" transform="translate(56 404) scale(10)"/>
+          <use href="#sp" transform="translate(323 438) scale(8)" class="tw t2"/>
+          <use href="#sp" transform="translate(200 375) scale(8)"/>
+        </g>
 
+        <!-- Étoiles en contour argenté -->
+        <g fill="none" stroke="#cfd8e6" stroke-width="1.1" class="star-outline">
+          <use href="#os" transform="translate(91 86) scale(8)"/>
+          <use href="#os" transform="translate(270 142) scale(7)"/>
+          <use href="#os" transform="translate(360 210) scale(7)"/>
+          <use href="#os" transform="translate(43 335) scale(8)"/>
+          <use href="#os" transform="translate(344 391) scale(7)"/>
+          <use href="#os" transform="translate(118 453) scale(8)"/>
+        </g>
+
+        <!-- Points lumineux -->
+        <g>
+          <circle cx="325" cy="45" r="2.4" fill="#f2c462" class="tw"/>
+          <circle cx="208" cy="75" r="2" fill="#f2c462"/>
+          <circle cx="390" cy="118" r="1.3" fill="#fff" class="tw t3"/>
+          <circle cx="228" cy="145" r="1.2" fill="#fff" class="tw t2"/>
+          <circle cx="395" cy="430" r="2.2" fill="#f2c462" class="tw t4"/>
+          <circle cx="295" cy="463" r="2" fill="#f2c462"/>
+          <circle cx="232" cy="332" r="1.4" fill="#fff" class="tw"/>
+          <circle cx="144" cy="250" r="1.2" fill="#fff" class="tw t3"/>
+          <circle cx="112" cy="200" r="1.8" fill="#f2c462"/>
+          <circle cx="200" cy="466" r="1.4" fill="#f2c462"/>
+        </g>
+
+        <!-- Comète dorée : étoile + fils de lumière -->
+        <g filter="url(#glow)" fill="none" stroke-linecap="round">
+          <path class="draw" pathLength="100" d="M318 70 C230 88 96 150 8 298" stroke="url(#gStrandF)" stroke-width="1.6"/>
+          <path class="draw d2" pathLength="100" d="M316 66 C226 80 100 140 14 290" stroke="#eef2f8" stroke-width=".7" opacity=".85"/>
+          <path class="draw d3" pathLength="100" d="M312 74 C224 98 92 164 6 310" stroke="url(#gStrandF)" stroke-width=".6"/>
+          <path class="draw d4" pathLength="100" d="M310 62 C210 70 120 110 40 230" stroke="#eef2f8" stroke-width=".4" opacity=".7"/>
+          <path class="draw d3" pathLength="100" d="M314 80 C240 110 130 190 60 280" stroke="#f2c462" stroke-width=".4" opacity=".6"/>
+          <path class="draw d4" pathLength="100" d="M300 56 C200 60 110 100 60 180" stroke="#eef2f8" stroke-width=".35" opacity=".5"/>
+        </g>
+        <g fill="#fff3c4">
+          <circle cx="250" cy="96" r=".8" class="tw"/>
+          <circle cx="180" cy="142" r=".7" class="tw t2"/>
+          <circle cx="120" cy="196" r=".6" class="tw t3"/>
+          <circle cx="78" cy="252" r=".6" class="tw t4"/>
+        </g>
+        <!-- Étoile filante (tête) -->
+        <path class="star-outline" d="M343 22 L352.4 49.1 L381 49.6 L358.2 66.9 L366.5 94.4 L343 78 L319.5 94.4 L327.8 66.9 L305 49.6 L333.6 49.1 Z"
+              fill="url(#gStar)" stroke="#f7d98a" stroke-width=".8" stroke-linejoin="round" filter="url(#glow)" style="animation-delay:1.6s"/>
+        <circle cx="343" cy="62" r="5" fill="#fff8e1" opacity=".5" filter="url(#glow)" class="star-outline" style="animation-delay:1.6s"/>
+      </svg>
+
+      <p class="abs best">Best</p>
+      <p class="abs wishes">Wishes</p>
+      <div class="divider"></div>
       <p class="abs team">From the <b>Pilot360</b><br>Project Team</p>
     </section>
 
     <!-- ===================== VERSO ===================== -->
     <section class="face back">
 
-      <!-- Même comète dorée fixe, en haut du verso -->
-      <svg class="art" viewBox="0 0 105 148" aria-hidden="true">
-        <defs>
-          <linearGradient id="goldB" gradientUnits="userSpaceOnUse" x1="14" y1="30" x2="90" y2="12">
-            <stop offset="0" stop-color="#f5c25b" stop-opacity="0"/>
-            <stop offset=".55" stop-color="#f5c25b" stop-opacity=".9"/>
-            <stop offset="1" stop-color="#fff1c4" stop-opacity="1"/>
-          </linearGradient>
-          <filter id="glowB" x="-30%" y="-100%" width="160%" height="300%">
-            <feGaussianBlur stdDeviation="1.6"/>
-          </filter>
-          <filter id="haloB" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="2.4"/>
-          </filter>
-        </defs>
+      <svg class="art" viewBox="0 0 400 500" aria-hidden="true">
+        <!-- Cadre doré arrondi -->
+        <rect x="53" y="81" width="296" height="347" rx="14" fill="none"
+              stroke="#d6a94f" stroke-width="1.4" opacity=".9" class="star-outline"/>
 
-        <!-- Cadre tracé à la main -->
-        <rect x="5" y="5" width="95" height="138" rx="2.5"
-              fill="none" stroke="#c9d0da" stroke-opacity=".35" stroke-width=".3"/>
-
-        <path class="streak-path" pathLength="100" d="M14 30 L90 12"
-              stroke="#f5c25b" stroke-width="2.8" stroke-linecap="round" opacity=".55" filter="url(#glowB)"/>
-        <path class="streak-path" pathLength="100" d="M14 30 L90 12"
-              stroke="url(#goldB)" stroke-width="1" stroke-linecap="round"/>
-        <path class="streak-path" pathLength="100" d="M14 30 L90 12"
-              stroke="#fffaf0" stroke-width=".3" stroke-linecap="round" opacity=".95"/>
-
-        <circle class="streak-head" cx="90" cy="12" r="3.2" fill="#f5c25b" opacity=".35" filter="url(#haloB)"/>
-        <circle class="streak-head" cx="90" cy="12" r="1.1" fill="#fff8e1"/>
-
-        <g fill="#ffffff">
-          <circle class="twinkle" cx="20" cy="18" r=".35"/>
-          <circle class="twinkle t3" cx="50" cy="10" r=".3"/>
-          <circle class="twinkle t2" cx="96" cy="120" r=".35"/>
-          <circle class="twinkle t4" cx="10" cy="110" r=".3"/>
+        <!-- Étoiles dorées à 4 branches -->
+        <g fill="#f2c462">
+          <use href="#sp" transform="translate(60 32) scale(7)"/>
+          <use href="#sp" transform="translate(26 197) scale(6)" class="tw t2"/>
+          <use href="#sp" transform="translate(374 97) scale(6)" class="tw t3"/>
+          <use href="#sp" transform="translate(372 261) scale(6)" class="tw t4"/>
+          <use href="#sp" transform="translate(27 433) scale(8)"/>
+          <use href="#sp" transform="translate(346 454) scale(8)" class="tw"/>
         </g>
+
+        <!-- Étoiles en contour argenté -->
+        <g fill="none" stroke="#cfd8e6" stroke-width="1.1" class="star-outline">
+          <use href="#os" transform="translate(113 50) scale(6)"/>
+          <use href="#os" transform="translate(27 336) scale(6)"/>
+          <use href="#os" transform="translate(375 179) scale(6)"/>
+          <use href="#os" transform="translate(375 415) scale(6)"/>
+          <use href="#os" transform="translate(94 454) scale(6)"/>
+        </g>
+
+        <!-- Points lumineux -->
+        <g>
+          <circle cx="34" cy="66" r="1.6" fill="#f2c462"/>
+          <circle cx="181" cy="41" r="1.6" fill="#f2c462" class="tw"/>
+          <circle cx="316" cy="63" r="1.4" fill="#f2c462"/>
+          <circle cx="385" cy="229" r="1.4" fill="#f2c462" class="tw t3"/>
+          <circle cx="369" cy="297" r="1.2" fill="#fff" class="tw t2"/>
+          <circle cx="386" cy="320" r="1.2" fill="#f2c462"/>
+          <circle cx="368" cy="375" r="1.6" fill="#f2c462" class="tw t4"/>
+          <circle cx="298" cy="468" r="1.4" fill="#f2c462"/>
+          <circle cx="51" cy="468" r="1.4" fill="#f2c462"/>
+          <circle cx="37" cy="398" r="1.3" fill="#f2c462" class="tw"/>
+          <circle cx="80" cy="204" r="1.2" fill="#fff" class="tw t3"/>
+        </g>
+
+        <!-- Comète dorée en haut à droite -->
+        <g filter="url(#glow)" fill="none" stroke-linecap="round">
+          <path class="draw" pathLength="100" d="M334 34 C290 40 230 58 170 84" stroke="url(#gStrandB)" stroke-width="1.2"/>
+          <path class="draw d2" pathLength="100" d="M332 30 C285 34 225 50 168 76" stroke="#eef2f8" stroke-width=".6" opacity=".85"/>
+          <path class="draw d3" pathLength="100" d="M336 38 C290 50 240 70 180 96" stroke="#f2c462" stroke-width=".5" opacity=".7"/>
+          <path class="draw d4" pathLength="100" d="M330 26 C280 24 220 36 160 60" stroke="#eef2f8" stroke-width=".4" opacity=".6"/>
+        </g>
+        <path class="star-outline" d="M357 12 L362.6 29.3 L381 29.6 L366.3 40.3 L371.9 57.6 L357 47 L342.1 57.6 L347.7 40.3 L333 29.6 L351.4 29.3 Z"
+              fill="url(#gStar)" stroke="#f7d98a" stroke-width=".7" stroke-linejoin="round" filter="url(#glow)" style="animation-delay:1.6s"/>
       </svg>
 
       <div class="verso-body">
-        <p class="intro">A comet is said to be a sign that something exceptional is coming ... and we like to think this one is no exception.</p>
+        <p>A comet is said to be a sign that something exceptional is coming ... and we like to think this one is no exception.</p>
         <p>As the year comes to an end, we simply wanted to say thank you for being part of our Pilot360 journey.</p>
         <p>For your energy, your commitment, and most of all, for everything we have made possible together.</p>
         <p>Wishing you and your loved ones a wonderful Christmas, a well-deserved break, and a New Year filled with happiness, success and many exceptional moments yet to come.</p>
-        <p class="sign">Merry Christmas from the Pilot360 Team!</p>
+        <p>Merry Christmas from the Pilot360 Team!</p>
       </div>
 
       <div class="logos-verso">
@@ -394,7 +437,7 @@
   </div>
 </div>
 
-<p style="margin:0;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(201,208,218,.5)">Cliquez sur la carte pour la retourner</p>
+<p class="hint">Cliquez sur la carte pour la retourner</p>
 
 <script>
   /* ---------- Retournement de la carte ---------- */
@@ -405,15 +448,14 @@
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
   });
 
-  /* ---------- Ciel étoilé + étoile filante dorée animée ---------- */
+  /* ---------- Fond : ciel étoilé + étoile filante dorée ---------- */
   const canvas = document.getElementById('sky');
   const ctx = canvas.getContext('2d');
   let stars = [], w, h, dpr;
 
-  // Paramètres de l'étoile filante (bas-gauche -> haut-droite)
-  const CYCLE = 7000;     // durée d'un cycle complet (ms)
-  const FLIGHT = 2200;    // durée de la traversée (ms)
-  const TAIL = 280;       // longueur de la traînée (px)
+  const CYCLE = 7000;   // durée d'un cycle (ms)
+  const FLIGHT = 2200;  // durée de la traversée (ms)
+  const TAIL = 280;     // longueur de la traînée (px)
 
   function resize() {
     dpr = window.devicePixelRatio || 1;
@@ -449,73 +491,39 @@
   function drawShootingStar(t) {
     const local = t % CYCLE;
     if (local > FLIGHT) return;
-
     const p = easeInOut(local / FLIGHT);
 
-    // Trajet : du coin bas-gauche au coin haut-droit (hors écran)
-    const x0 = -80, y0 = h + 80;
-    const x1 = w + 80, y1 = -80;
+    const x0 = -80, y0 = h + 80, x1 = w + 80, y1 = -80;
     const hx = x0 + (x1 - x0) * p;
     const hy = y0 + (y1 - y0) * p;
-
-    // Direction unitaire
-    const dx = x1 - x0, dy = y1 - y0;
-    const len = Math.hypot(dx, dy);
-    const ux = dx / len, uy = dy / len;
-
-    const tx = hx - ux * TAIL;
-    const ty = hy - uy * TAIL;
-
-    // Fade in / out aux extrémités
-    const fade = Math.min(1, Math.sin(Math.PI * (local / FLIGHT)) * 1.6);
+    const len = Math.hypot(x1 - x0, y1 - y0);
+    const ux = (x1 - x0) / len, uy = (y1 - y0) / len;
+    const tx = hx - ux * TAIL, ty = hy - uy * TAIL;
+    const alpha = Math.max(0, Math.min(1, Math.sin(Math.PI * (local / FLIGHT)) * 1.6));
 
     ctx.save();
-    ctx.globalAlpha = Math.max(0, fade);
-
-    // Halo large et doux
-    const haloGrad = ctx.createLinearGradient(tx, ty, hx, hy);
-    haloGrad.addColorStop(0, 'rgba(245,194,91,0)');
-    haloGrad.addColorStop(1, 'rgba(245,194,91,.35)');
-    ctx.strokeStyle = haloGrad;
+    ctx.globalAlpha = alpha;
     ctx.lineCap = 'round';
-    ctx.lineWidth = 10;
-    ctx.beginPath();
-    ctx.moveTo(tx, ty);
-    ctx.lineTo(hx, hy);
-    ctx.stroke();
 
-    // Corps doré
-    const grad = ctx.createLinearGradient(tx, ty, hx, hy);
-    grad.addColorStop(0, 'rgba(245,194,91,0)');
-    grad.addColorStop(.6, 'rgba(245,194,91,.9)');
-    grad.addColorStop(1, 'rgba(255,241,196,1)');
-    ctx.strokeStyle = grad;
-    ctx.lineWidth = 3.2;
-    ctx.beginPath();
-    ctx.moveTo(tx, ty);
-    ctx.lineTo(hx, hy);
-    ctx.stroke();
+    const halo = ctx.createLinearGradient(tx, ty, hx, hy);
+    halo.addColorStop(0, 'rgba(245,194,91,0)');
+    halo.addColorStop(1, 'rgba(245,194,91,.35)');
+    ctx.strokeStyle = halo; ctx.lineWidth = 10;
+    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(hx, hy); ctx.stroke();
 
-    // Cœur blanc très fin
-    const coreGrad = ctx.createLinearGradient(tx, ty, hx, hy);
-    coreGrad.addColorStop(0, 'rgba(255,250,240,0)');
-    coreGrad.addColorStop(1, 'rgba(255,250,240,1)');
-    ctx.strokeStyle = coreGrad;
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(tx, ty);
-    ctx.lineTo(hx, hy);
-    ctx.stroke();
+    const body = ctx.createLinearGradient(tx, ty, hx, hy);
+    body.addColorStop(0, 'rgba(245,194,91,0)');
+    body.addColorStop(.6, 'rgba(245,194,91,.9)');
+    body.addColorStop(1, 'rgba(255,241,196,1)');
+    ctx.strokeStyle = body; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(hx, hy); ctx.stroke();
 
-    // Tête lumineuse
-    const headGlow = ctx.createRadialGradient(hx, hy, 0, hx, hy, 22);
-    headGlow.addColorStop(0, 'rgba(255,241,196,.95)');
-    headGlow.addColorStop(.3, 'rgba(245,194,91,.45)');
-    headGlow.addColorStop(1, 'rgba(245,194,91,0)');
-    ctx.fillStyle = headGlow;
-    ctx.beginPath();
-    ctx.arc(hx, hy, 22, 0, Math.PI * 2);
-    ctx.fill();
+    const head = ctx.createRadialGradient(hx, hy, 0, hx, hy, 22);
+    head.addColorStop(0, 'rgba(255,241,196,.95)');
+    head.addColorStop(.3, 'rgba(245,194,91,.45)');
+    head.addColorStop(1, 'rgba(245,194,91,0)');
+    ctx.fillStyle = head;
+    ctx.beginPath(); ctx.arc(hx, hy, 22, 0, Math.PI * 2); ctx.fill();
 
     ctx.restore();
   }
