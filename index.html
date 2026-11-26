@@ -201,13 +201,14 @@
   }
   .team b { font-weight: 500; }
 
-  /* ---------- Verso : texte descendu pour laisser plus d'espace sous le cadre doré ---------- */
+  /* ---------- Verso : texte centré au milieu du cadre doré ---------- */
+  /* Centre du cadre : x = 201/400 (50,25 %), y = 245,5/500 (49,1 %) */
   .verso-body {
     position: absolute;
-    left: 21%;
-    right: 21%;
-    top: 29%;
-    height: 44%;
+    left: 50.25%;
+    top: 49.1%;
+    transform: translate(-50%, -50%);
+    width: 58%;
     display: flex;
     flex-direction: column;
     justify-content: center;
