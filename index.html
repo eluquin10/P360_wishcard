@@ -24,7 +24,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 0;
     background: radial-gradient(ellipse at 50% 30%, #14306a 0%, #040d22 75%);
     font-family: 'Montserrat', Arial, sans-serif;
     color: var(--silver);
@@ -40,11 +40,11 @@
     pointer-events: none;
   }
 
-  /* ---------- Carte ---------- */
+  /* ---------- Carte : occupe la quasi-totalité de l'écran, ratio 4/5 ---------- */
   .wrap {
     position: relative;
     z-index: 1;
-    width: min(400px, 88vw);
+    width: min(94vw, calc(94vh * 0.8));
     aspect-ratio: 4 / 5;
     container-type: inline-size;
     perspective: 1800px;
@@ -227,7 +227,13 @@
   .tw.t4 { animation-delay: -.6s; animation-duration: 4.2s; }
 
   .hint {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 10px;
     margin: 0;
+    text-align: center;
+    z-index: 2;
     font-size: .68rem;
     letter-spacing: .25em;
     text-transform: uppercase;
@@ -357,8 +363,8 @@
         </g>
         <!-- Étoile filante (tête) -->
         <path class="star-outline" d="M343 22 L352.4 49.1 L381 49.6 L358.2 66.9 L366.5 94.4 L343 78 L319.5 94.4 L327.8 66.9 L305 49.6 L333.6 49.1 Z"
-              fill="url(#gStar)" stroke="#f7d98a" stroke-width=".8" stroke-linejoin="round" filter="url(#glow)" style="animation-delay:1.6s"/>
-        <circle cx="343" cy="62" r="5" fill="#fff8e1" opacity=".5" filter="url(#glow)" class="star-outline" style="animation-delay:1.6s"/>
+              fill="url(#gStar)" stroke="#f7d98a" stroke-width=".8" stroke-linejoin="round" filter="url(#glow)"/>
+        <circle cx="343" cy="62" r="5" fill="#fff8e1" opacity=".5" filter="url(#glow)" class="star-outline"/>
       </svg>
 
       <p class="abs best">Best</p>
@@ -417,7 +423,7 @@
           <path class="draw d4" pathLength="100" d="M330 26 C280 24 220 36 160 60" stroke="#eef2f8" stroke-width=".4" opacity=".6"/>
         </g>
         <path class="star-outline" d="M357 12 L362.6 29.3 L381 29.6 L366.3 40.3 L371.9 57.6 L357 47 L342.1 57.6 L347.7 40.3 L333 29.6 L351.4 29.3 Z"
-              fill="url(#gStar)" stroke="#f7d98a" stroke-width=".7" stroke-linejoin="round" filter="url(#glow)" style="animation-delay:1.6s"/>
+              fill="url(#gStar)" stroke="#f7d98a" stroke-width=".7" stroke-linejoin="round" filter="url(#glow)"/>
       </svg>
 
       <div class="verso-body">
